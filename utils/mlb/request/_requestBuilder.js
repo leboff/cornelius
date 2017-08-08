@@ -9,7 +9,8 @@ const url = require('url'),
 		stats: {
 			hitting: 'sport_hitting_tm.bam',
 			pitching: 'sport_pitching_tm.bam'
-		}
+		},
+		sits: 'sport_hitting_sits_composed.bam'
 	};
 
 
@@ -57,6 +58,21 @@ function buildRequest(type, options) {
 					uri += `${endpoints.stats.hitting}?player_id=${options.player_id || options}&game_type='R'&league_list_id='mlb'`;
 				}
 			}
+			break;
+		case 'sits':
+			uri += `${endpoints.sits}?league_list_id=%27mlb_hist%27&game_type=%27R%27&season=${options.year}&player_id=${options.player_id}`
+			var months;
+			if(options.months){
+				months = options.months.map(function(month){
+					return `sit_code=%27${month}%27`
+				})
+			}
+			else{
+				months = [1,2,3,4,5,6,7,8,9,10,11,12].map(function(month){
+					return `sit_code=%27${month}%27`
+				})
+			}
+			uri += '&' + months.join('&');
 			break;
 		default:
 			return;

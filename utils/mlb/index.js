@@ -5,5 +5,6 @@ module.exports = {
 	player: require('./_getPlayer'),
 	playerId: require('./_getPlayerId'),
 	roster: require('./_getRoster'),
-	stats: require('./_getStats')
+	stats: require('./_getStats'),
+	sits: require('./_getSits')
 };
