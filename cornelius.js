@@ -1,12 +1,18 @@
-'use strict';
+/**
+ * Represents Cornelius module.
+ * @private
+ */
+class Cornelius {
+    /**
+     * Makes Cornelius functions available.
+     */
+    constructor() {
+        this.playerSearch = require('./lib/playerSearch');
+        this.getPlayer = require('./lib/getPlayer');
+        this.getStats = require('./lib/getStats');
+        this.getSits = require('./lib/getSits');
+        this.getRoster = require('./lib/getRoster');
+    }
+}
 
-function cornelius () {}
-
-cornelius.prototype.searchPlayer = require('./lib/searchPlayer');
-cornelius.prototype.getPlayer = require('./lib/getPlayer');
-cornelius.prototype.getStats = require('./lib/getStats');
-cornelius.prototype.getSits = require('./lib/getSits');
-cornelius.prototype.getRoster = require('./lib/getRoster');
-cornelius.prototype.pruneData = require('./lib/pruneData');
-
-module.exports = new cornelius();
+module.exports = new Cornelius();
